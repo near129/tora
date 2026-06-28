@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tra 設定</title>
+    <style>
+      :root {
+        /* ライトモード（デフォルト） */
+        --tora-bg-page: #f8f8fb;
+        --tora-bg-control: #f1f1f4;
+        --tora-bg-hover: #f2f2f2;
+        --tora-text-primary: #000000;
+        --tora-text-secondary: #626264;
+        --tora-border: #cccccc;
+        --tora-accent: #3460fb;
+        --tora-error-text: #ce0000;
+        --tora-error-bg: #ce0000;
+        --tora-success: #197a4b;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --tora-bg-page: #1a1a1a;
+          --tora-bg-control: #4d4d4d;
+          --tora-bg-hover: #767676;
+          --tora-text-primary: #ffffff;
+          --tora-text-secondary: #999999;
+          --tora-border: #767676;
+          --tora-accent: #7096f8;
+          --tora-error-text: #ff7171;
+          --tora-error-bg: #fe3939;
+          --tora-success: #197a4b;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        max-width: 720px;
+        margin: 40px auto;
+        padding: 0 20px;
+        background: var(--tora-bg-page);
+        color: var(--tora-text-primary);
+        line-height: 1.6;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
+
+      .field {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 6px;
+        font-size: 14px;
+      }
+
+      .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 400;
+        cursor: pointer;
+      }
+
+      .checkbox-label input[type="checkbox"] {
+        margin: 0;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid var(--tora-border);
+        border-radius: 6px;
+        font-size: 14px;
+        background: var(--tora-bg-control);
+        color: var(--tora-text-primary);
+      }
+
+      input[type="text"]:focus,
+      input[type="password"]:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--tora-accent);
+      }
+
+      textarea {
+        min-height: 160px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        line-height: 1.5;
+      }
+
+      .hint {
+        font-size: 12px;
+        color: var(--tora-text-secondary);
+        margin-top: 4px;
+      }
+
+      .error {
+        color: var(--tora-error-text);
+        font-size: 13px;
+        margin-top: 4px;
+        display: none;
+      }
+
+      .status {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 13px;
+        background: var(--tora-success);
+        color: white;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+
+      .status.show {
+        opacity: 1;
+      }
+
+      .status.error {
+        background: var(--tora-error-bg);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>tra 設定</h1>
+    <form id="options-form">
+      <div class="field">
+        <label for="api-url">API URL</label>
+        <input type="text" id="api-url" name="apiUrl" placeholder="http://localhost:11434" />
+        <div class="hint" id="api-url-hint">
+          OpenAI 互換 API のベース URL（Ollama: http://localhost:11434、LM Studio など:
+          http://localhost:1234）
+        </div>
+        <div class="error" id="api-url-error">URL を入力してください</div>
+      </div>
+      <div class="field">
+        <label for="api-key">API キー</label>
+        <input type="password" id="api-key" name="apiKey" placeholder="sk-..." />
+        <div class="hint">ローカルサーバー（Ollama や LM Studio など）では空欄でも構いません。</div>
+      </div>
+      <div class="field">
+        <label for="model-name">モデル名</label>
+        <input type="text" id="model-name" name="modelName" placeholder="translategemma:latest" />
+        <div class="error" id="model-name-error">モデル名 を入力してください</div>
+      </div>
+      <div class="field">
+        <label for="target-lang">対象言語</label>
+        <select id="target-lang" name="targetLang"></select>
+      </div>
+      <div class="field">
+        <label for="source-lang">元言語</label>
+        <select id="source-lang" name="sourceLang"></select>
+        <div class="hint">「自動検出」を選ぶと、選択したテキストの言語を Chrome が判定します。</div>
+      </div>
+      <div class="field">
+        <label for="prompt-template">プロンプトテンプレート</label>
+        <textarea id="prompt-template" name="promptTemplate"></textarea>
+        <div class="hint">
+          {SOURCE_LANG}、{SOURCE_CODE}、{TARGET_LANG}、{TARGET_CODE}、{TEXT} が置換されます。
+        </div>
+        <div class="error" id="prompt-template-error">{TEXT} を含めてください</div>
+      </div>
+      <div class="field">
+        <label class="checkbox-label">
+          <input type="checkbox" id="show-speed" name="showSpeed" />
+          翻訳の処理スピードをパネルに表示する
+        </label>
+      </div>
+    </form>
+    <div class="status" id="status">保存しました</div>
+    <script src="options.js"></script>
+  </body>
+</html>

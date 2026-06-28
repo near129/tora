@@ -1,0 +1,23 @@
+{
+  "name": "tora",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser extension for translating selected text with OpenAI-compatible API + TranslateGemma",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.ts",
+    "dev": "node scripts/build.ts --watch",
+    "lint": "oxlint",
+    "fmt": "oxfmt --write",
+    "check": "tsc --noEmit",
+    "package": "node scripts/build.ts --zip"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.319",
+    "esbuild": "^0.28.1",
+    "oxfmt": "^0.55.0",
+    "oxlint": "1.70.0",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "pnpm@11.5.3"
+}

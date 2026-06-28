@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- 白丸背景 -->
+  <circle cx="64" cy="64" r="58" fill="#ffffff"/>
+
+  <!-- 耳 -->
+  <path d="M32 40 L22 14 L50 30" stroke="#f97316" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M96 40 L106 14 L78 30" stroke="#f97316" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 顔の輪郭 -->
+  <circle cx="64" cy="72" r="40" stroke="#f97316" stroke-width="6" fill="none"/>
+
+  <!-- 額の縞 -->
+  <path d="M64 36 L64 54" stroke="#1f2937" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M44 42 L54 56" stroke="#1f2937" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M84 42 L74 56" stroke="#1f2937" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- 目 -->
+  <circle cx="50" cy="68" r="6" stroke="#1f2937" stroke-width="4" fill="none"/>
+  <circle cx="78" cy="68" r="6" stroke="#1f2937" stroke-width="4" fill="none"/>
+
+  <!-- 鼻 -->
+  <path d="M58 86 L70 86 L64 94 Z" stroke="#1f2937" stroke-width="4" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- 口 -->
+  <path d="M64 94 L64 102" stroke="#1f2937" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M64 102 Q52 108 46 100" stroke="#1f2937" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M64 102 Q76 108 82 100" stroke="#1f2937" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- ほっぺの縞 -->
+  <path d="M26 66 L42 72" stroke="#1f2937" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M26 78 L42 78" stroke="#1f2937" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M102 66 L86 72" stroke="#1f2937" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M102 78 L86 78" stroke="#1f2937" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- ひげ -->
+  <path d="M40 86 L22 82" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M40 92 L22 94" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M88 86 L106 82" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M88 92 L106 94" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>
