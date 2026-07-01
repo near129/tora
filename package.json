@@ -13,7 +13,7 @@
     "package": "node scripts/build.ts --zip"
   },
   "devDependencies": {
-    "@types/chrome": "^0.1.43",
+    "@types/chrome": "^0.2.0",
     "esbuild": "^0.28.1",
     "oxfmt": "^0.55.0",
     "oxlint": "1.70.0",
